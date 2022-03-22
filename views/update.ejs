@@ -1,0 +1,21 @@
+<!Doctype html>
+<html lang="en">
+	<%- include("./partials/head.ejs") %>
+	<body>
+		<div id="index-page-container">
+			<h3 class="title">Task Lister</h3>
+			
+			<div id="index-page-form">
+				<form action= "/updateData/<%= typeof tableDetail!='undefined' ? tableDetail.id :'' %>" method="post">
+					<div class="form-block">
+						<label for="task_name" class="form-label">Enter Task Name :</label>
+						<input class="form-input" name="task_name" type="text" placeholder="task name" value="<%= typeof tableDetail!='undefined' ? tableDetail.task_name  : '' %>" required/>
+					</div>
+					<button type="submit" class="form-submit"> Update Task Name </button>
+				</form>
+				<a href="/sllk" class="table-anchor"><button class="buttons">Go back</button></a>
+			</div>
+		
+		
+	</body>
+</html>

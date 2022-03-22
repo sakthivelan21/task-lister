@@ -1,0 +1,54 @@
+<!Doctype html>
+<html lang="en">
+	<%- include("./partials/head.ejs") %>
+	<body>
+		<div id="index-page-container">
+			<div class="head-bar">
+				<h2>Task Lister</h2>
+			</div>
+			<div id="index-page-form">
+				<form action="/addData" method="post">
+					<div class="form-block">
+						<label for="task_name" class="form-label">Enter Task Name :</label>
+						<input class="form-input" name="task_name" type="text" placeholder="Task Name" required />
+					</div>
+					<input type="submit" value="add" class="form-submit">
+				</form>
+			</div>		
+			    <% if (table.length == 0) { %>
+				<h4 class="title">Oops !! add a new one !!</h4>
+			
+			    <% }  
+			       else { %>
+					<div id="index-page-table">
+						<table>
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Task Name</th>
+									<th> Task Created Time</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+									<% table.forEach(taskDetail=> { %>
+										<tr>
+											<td><%= taskDetail.id %></td>
+											<td><%= taskDetail.task_name %></td>
+											<td><%= taskDetail.time_created %></td>
+											<td>
+												<a href="/update/<%=taskDetail.id %>" class="table-anchor"><button class="buttons">Update</button></a>
+												<a href="/deleteData/<%=taskDetail.id %>" class="table-anchor"><button class="buttons">Delete</button></a>
+											</td>
+									</tr>
+									<% }) %>
+								
+							</tbody>
+						</table>
+					</div>
+				<% } %>
+			
+		</div>
+	</body>
+</html>
